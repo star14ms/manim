@@ -15,7 +15,7 @@ pygments
 pyyaml
 rich
 screeninfo
-pyreadline; sys_platform == 'win32'
+pyreadline; sys_platform == 'win64'
 validators
 ipython
 PyOpenGL
