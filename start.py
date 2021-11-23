@@ -1,6 +1,6 @@
-from math import sqrt
 from manimlib import *
 import numpy as np
+import time as t
 
 # class SquareToCircle(Scene):
     # def construct(self):
@@ -115,71 +115,71 @@ import numpy as np
     #         run_time=3
     #     )
         
-        
-# class CoordinatePlane(Scene):
-    # def construct(self):
-    #     intro_words = Text("""
-    #         The original motivation for manim was to
-    #         better illustrate mathematical functions
-    #         as transformations.
-    #     """)
-    #     intro_words.to_edge(UP)
 
-    #     self.play(Write(intro_words))
-    #     self.wait(2)
+class CoordinatePlane(Scene):
+    def construct(self):
+        intro_words = Text("""
+            The original motivation for manim was to
+            better illustrate mathematical functions
+            as transformations.
+        """)
+        intro_words.to_edge(UP)
 
-    #     # Linear transform
-    #     grid = NumberPlane((-10, 10), (-5, 5))
-    #     matrix = [[0, 0], [0, 1]]
-    #     linear_transform_words = VGroup(
-    #         Text("This is what the matrix"),
-    #         IntegerMatrix(matrix, include_background_rectangle=True),
-    #         Text("looks like")
-    #     )
-    #     linear_transform_words.arrange(RIGHT)
-    #     linear_transform_words.to_edge(UP)
-    #     linear_transform_words.set_stroke(BLACK, 10, background=True)
+        self.play(Write(intro_words))
+        self.wait(2)
 
-    #     self.play(
-    #         ShowCreation(grid),
-    #         FadeTransform(intro_words, linear_transform_words)
-    #     )
-    #     self.wait()
-    #     # self.play(grid.animate.apply_matrix(matrix), run_time=3)
-    #     self.play(grid.animate.apply_function(lambda z: z+1), run_time=3)
-    #     self.wait()
+        # Linear transform
+        grid = NumberPlane((-10, 10), (-5, 5))
+        matrix = [[0, 0], [0, 1]]
+        linear_transform_words = VGroup(
+            Text("This is what the matrix"),
+            IntegerMatrix(matrix, include_background_rectangle=True),
+            Text("looks like")
+        )
+        linear_transform_words.arrange(RIGHT)
+        linear_transform_words.to_edge(UP)
+        linear_transform_words.set_stroke(BLACK, 10, background=True)
 
-    #     # Complex map
-    #     c_grid = ComplexPlane((-15, 15), (-15, 15))
-    #     moving_c_grid = c_grid.copy()
-    #     moving_c_grid.prepare_for_nonlinear_transform()
-    #     c_grid.set_stroke(BLUE_E, 1)
-    #     c_grid.add_coordinate_labels(font_size=24)
-    #     complex_map_words = TexText("""
-    #         Or thinking of the plane as $\\mathds{C}$,\\\\
-    #         this is the map $z \\rightarrow z^2$
-    #     """)
-    #     complex_map_words.to_corner(UR)
-    #     complex_map_words.set_stroke(BLACK, 5, background=True)
+        self.play(
+            ShowCreation(grid),
+            FadeTransform(intro_words, linear_transform_words)
+        )
+        self.wait()
+        # self.play(grid.animate.apply_matrix(matrix), run_time=3)
+        self.play(grid.animate.apply_function(lambda z: z+1), run_time=3)
+        self.wait()
 
-    #     self.play(
-    #         FadeOut(grid),
-    #         Write(c_grid, run_time=3),
-    #         FadeIn(moving_c_grid),
-    #         FadeTransform(linear_transform_words, complex_map_words),
-    #     )
-    #     for _ in range(4):
-    #         self.wait()
-    #         self.play(
-    #             moving_c_grid.animate.apply_complex_function(lambda z: z*1j),
-    #             run_time=2,
-    #         )
-    #     self.wait()
-    #     self.play(
-    #         moving_c_grid.animate.apply_complex_function(lambda z: z**2),
-    #         run_time=6,
-    #     )
-    #     self.wait(2)
+        # Complex map
+        c_grid = ComplexPlane((-15, 15), (-15, 15))
+        moving_c_grid = c_grid.copy()
+        moving_c_grid.prepare_for_nonlinear_transform()
+        c_grid.set_stroke(BLUE_E, 1)
+        c_grid.add_coordinate_labels(font_size=24)
+        complex_map_words = TexText("""
+            Or thinking of the plane as $\\mathds{C}$,\\\\
+            this is the map $z \\rightarrow z^2$
+        """)
+        complex_map_words.to_corner(UR)
+        complex_map_words.set_stroke(BLACK, 5, background=True)
+
+        self.play(
+            FadeOut(grid),
+            Write(c_grid, run_time=3),
+            FadeIn(moving_c_grid),
+            FadeTransform(linear_transform_words, complex_map_words),
+        )
+        for _ in range(4):
+            self.wait()
+            self.play(
+                moving_c_grid.animate.apply_complex_function(lambda z: z*1j),
+                run_time=2,
+            )
+        self.wait()
+        self.play(
+            moving_c_grid.animate.apply_complex_function(lambda z: z**2),
+            run_time=6,
+        )
+        self.wait(2)
     
     
 # class TexTransformExample(Scene):
@@ -295,27 +295,25 @@ import numpy as np
     #     self.wait()
         
         
-# class UNDERTALE(Scene):
-    # def construct(self):
-    #     font = 'Determination Sans'
+class UNDERTALE(Scene):
+    def construct(self):
+        font = 'Comic Sans MS'
         
-    #     text1 = 'UNDERTALE' # UNDERTALE # undertale
-    #     text2 = 'DELTARUNE' # DELTARUNE # deltarune
+        text1 = 'UNDERTALE' # UNDERTALE # undertale
+        text2 = 'DELTARUNE' # DELTARUNE # deltarune
         
-    #     # source = Tex(*[c for c in source_text], font_size=256, font=font)
-    #     # target = Tex(*[c for c in target_text], font_size=256, font=font)
+        # source = Tex(*[c for c in source_text], font_size=256, font=font)
+        # target = Tex(*[c for c in target_text], font_size=256, font=font)
         
-    #     text_1 = Text(text1, font_size=200, font=font)
-    #     text_2 = Text(text2, font_size=200, font=font)
+        text_1 = Text(text1, font_size=160, font=font)
+        text_2 = Text(text2, font_size=160, font=font)
     
-    #     self.play(Write(text1))
-    #     self.wait()
-    #     kw = {"run_time": 2, "path_arc": PI }
-    #     for _ in range(2):
-    #         self.play(TransformMatchingShapes(text_1, text_2, **kw))
-    #         self.wait()
-    #         self.play(TransformMatchingShapes(text_2, text_1, **kw))
-    #         self.wait()
+        self.play(Write(text_1))
+        self.wait()
+        kw = {"run_time": 2, "path_arc": PI }
+        for n in range(1, 9):
+            self.play(TransformMatchingShapes(text_1, text_2, **kw), run_time=0.4+1/n)
+            self.play(TransformMatchingShapes(text_2, text_1, **kw), run_time=0.4+1/n)
 
 
 # class Positions(Scene):
@@ -337,85 +335,62 @@ import numpy as np
     #     )
 
 
-# class Primes(Scene):
-    # def construct(self):
-        # with open('data/1억 중 소수목록.txt') as f:
-        #     primes = f.read().split(',')[:-1]
-        # primes = list(map(int, primes))
-        # print('소수 데이터 가져오기 완료! (소수 개수 %d개)' % len(primes))
-        
-        # ar = 5000
-        # zoom = lambda x: x/500
-        # axes_range = (-ar, ar), (-ar//2, ar//2)
-        
-        # plane = NumberPlane(*axes_range,
-        #     background_stroke_opacity=0, faded_line_ratio=0)
-        # plane.apply_function(zoom),
-        # # labels = [n if abs(n)%10==0 else 0 for n in range(*axes_range[0])]
-        # # plane.add_coordinate_labels(labels, labels)
-        # self.play(Write(plane, lag_ratio=0.01, run_time=1))
-        
-        # for n in primes:
-        #     if n > ar: break
-            
-        #     dot = Dot(np.array([n, 0, 0])).rotate(n, about_point=ORIGIN)
-        #     dot.apply_function(zoom)
-        #     dot = Dot(dot.get_center(), color=BLUE, radius=0.04)
-        #     # text = Text(str(n), font_size=18).next_to(dot)
-            
-        #     self.play(
-        #         FadeIn(dot),
-        #         # FadeIn(text),
-        #         run_time = 1/n
-        #     )
-        #     print(n)
-            
-
-class Primes2(Scene):
+class Primes(Scene):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.start = t.time()
         with open('data/1억 중 소수목록.txt') as f:
             primes = f.read().split(',')[:-1]
         self.primes = list(map(int, primes))
         print('소수 데이터 가져오기 완료! (소수 개수 %d개)' % len(primes))
-    
-    def construct(self):
-        ar = 100*8 # 사용할 소수 범위
-        axes_range = (-ar, ar), (-ar//2, ar//2)
-        zoom1 = lambda x: x/10
-        zoom2 = lambda x: x/10
-        
-        background_line_style = {
+
+        self.background_line_style = {
             "stroke_color": BLUE_D,
             "stroke_width": 2,
             "stroke_opacity": 0,
         }
+    
+    def construct(self):
+        ar = 1000*8 # 사용할 소수 범위
+        axes_range = (-ar, ar), (-ar//2, ar//2)
+        zoom1 = lambda x: x/10
+        zoom2 = lambda x: x/100
         
         # 좌표평면 그리기
         plane = NumberPlane(faded_line_ratio=0)
         self.play(Write(plane, lag_ratio=0.01, run_time=1))
         plane.add_coordinate_labels()
         
-        dots0 = []
-        for i in range(1, 5):
+        dots_moved = []
+        for i, info_pos in zip(range(1, 5), [UR, UL, UP, UL]):
             vector = Vector(X_AXIS*i)
+            dot = Dot(X_AXIS*i, color=BLUE)
+            self.play(FadeIn(dot), ShowCreation(vector))
+            
+            x_tracker = ValueTracker(i)
             arc = Arc(0, i, radius=i, color=BLUE)
-            dots0.append(Dot(X_AXIS*i, color=BLUE).rotate_about_origin(i, axis=Z_AXIS))
-            text = Text(f"(r={i}, rad={i})").next_to(dots0[-1], direction=UR)
-
-            self.play(ShowCreation(vector))
-            self.play(ShowCreation(arc),
-                      vector.animate.rotate_about_origin(i, axis=Z_AXIS))
-            self.play(FadeIn(dots0[-1]), FadeIn(text))
+            f_always(
+                dot.move_to,
+                lambda: plane.i2gp(x_tracker.get_value(), arc)
+            )
+            dots_moved.append(Dot(dot.get_center(), color=BLUE))
+            text = Text(f"(r={i}, rad={i})").next_to(dot, direction=info_pos)
+            
+            f_always(
+                vector.set_points_by_ends,
+                lambda: ORIGIN,
+                lambda: plane.i2gp(x_tracker.get_value(), arc),
+            )
+            self.play(ShowCreation(arc), x_tracker.animate.set_value(i))
+            self.play(FadeIn(text), FadeIn(dots_moved[-1]), FadeOut(dot))
             self.wait()
             self.play(FadeOut(arc), FadeOut(text), FadeOut(vector))
-        return 
             
         plane2 = NumberPlane(*axes_range,
-            background_line_style=background_line_style, faded_line_ratio=0)
+            background_line_style=self.background_line_style, faded_line_ratio=0)
         self.play(FadeOut(plane), FadeIn(plane2))
         
-        zoom_dots = [dot.animate.apply_function(zoom1) for dot in dots0]
+        zoom_dots = [dot.animate.apply_function(zoom1) for dot in dots_moved]
         self.play(plane2.animate.apply_function(zoom1), *zoom_dots)
         self.wait()
         
@@ -450,11 +425,11 @@ class Primes2(Scene):
         
         # 화면 안의 소수 아닌 수들 사라지기
         fadeOut_dots = [FadeOut(dot) for dot in dots_no_primes[:100]]
-        FadeOut_dots0 = [FadeOut(dot) for dot in dots0]
+        fadeOut_dots0 = [FadeOut(dot) for dot in dots_moved]
         fadeOut_texts = [FadeOut(text) for text in texts_no_primes]
         text = Text('소수만 남기기', font='BM JUA_TTF').to_corner(UR)
         self.play(Write(text))
-        self.play(*fadeOut_dots, *fadeOut_texts, *FadeOut_dots0, run_time=3)
+        self.play(*fadeOut_dots, *fadeOut_texts, *fadeOut_dots0, run_time=3)
         
         # 화면 안의 소수 숫자만 사라지기, 화면 밖의 나머지 소수들 모두 나타나기
         fadeOut_texts = [FadeOut(text) for text in texts_primes]
@@ -463,8 +438,34 @@ class Primes2(Scene):
         
         # 화면 축소하기
         move_dots = [dot.animate.move_to(zdot.get_center()) for dot, zdot in zip(dots_primes, dots_primes_zoom2)]
-        self.play(*move_dots, plane2.animate.apply_function(zoom2), run_time=3)
+        self.play(*move_dots, run_time=3) # plane2.animate.apply_function(zoom2), 
         self.wait()
 
+        time_delta = t.time() - self.start
+        print(f'{time_delta // 60}m {time_delta % 60}s')
 
+
+class Zoom_Plane(Scene):
+    def construct(self):
+        ar = 10*8 # 사용할 소수 범위
+        axes_range = (-ar, ar), (-ar//2, ar//2)
+        zoom_out = lambda x: x/5
+        x_square = lambda x: x**2
+
+        background_line_style = {
+            "stroke_color": BLUE_D,
+            "stroke_width": 2,
+            "stroke_opacity": 1,
+        }
         
+        # plane = NumberPlane(*axes_range, 
+        #     background_line_style=background_line_style, faded_line_ratio=0)
+        plane = ComplexPlane(*axes_range, 
+            background_line_style=background_line_style, faded_line_ratio=0)
+        self.play(Write(plane, lag_ratio=0.01, run_time=1))
+        
+        # labels = [n if abs(n)%100==0 or abs(n) in range(-10,11) else 0 for n in range(*axes_range[0])]
+        # plane.add_coordinate_labels(labels, labels, font_size=100)
+        self.play(plane.animate.apply_function(zoom_out), run_time=1) 
+        self.play(plane.animate.apply_function(zoom_out), run_time=1) 
+        self.play(plane.animate.apply_complex_function(x_square), run_time=10)
