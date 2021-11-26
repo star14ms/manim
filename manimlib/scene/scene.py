@@ -7,6 +7,7 @@ from functools import wraps
 from tqdm import tqdm as ProgressDisplay
 import numpy as np
 import time
+import math
 
 from manimlib.animation.animation import prepare_animation
 from manimlib.animation.transform import MoveToTarget
@@ -40,6 +41,7 @@ class Scene(object):
     }
 
     def __init__(self, **kwargs):
+        self.start_time = time.time()
         digest_config(self, kwargs)
         if self.preview:
             from manimlib.window import Window
@@ -627,6 +629,34 @@ class Scene(object):
 
     def on_close(self):
         pass
+    
+    def time_delta(self, start_time=None, ms=False):
+        if not start_time: 
+            start_time = self.start_time
+            
+        time_delta = time.time() - start_time
+        delta_int = math.floor(time_delta)
+        
+        str_delta = '{}h {}m {}s'.format(
+            delta_int // 3600, 
+            (delta_int % 3600) // 60, 
+            (delta_int % 3600) % 60, 
+        )
+        if ms:
+            ms = int(round(time_delta-delta_int, 3)*100)
+            str_delta = str_delta + ' {}ms'.format(
+            ms if (ms > 99) else '0'+str(ms) if (ms > 9) else '00'+str(ms)
+        )
+        return str_delta
+    
+    def camera_move(self, direction, amount=100, run_time=1):
+        frame = self.camera.frame
+        offset = frame.get_center()
+        move_pixel = direction*2/100*amount / (run_time*60)
+        
+        for _ in range(int(run_time*60)):
+            frame.move_to(offset + move_pixel)
+            self.wait(0.01)
 
 
 class EndSceneEarlyException(Exception):
