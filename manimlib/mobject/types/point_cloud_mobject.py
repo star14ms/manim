@@ -4,6 +4,7 @@ from manimlib.utils.color import color_gradient
 from manimlib.utils.color import color_to_rgba
 from manimlib.utils.iterables import resize_with_interpolation
 from manimlib.utils.iterables import resize_array
+from colour import Color
 
 
 class PMobject(Mobject):
@@ -25,23 +26,24 @@ class PMobject(Mobject):
         self.resize_points(len(points))
         return self
 
-    def add_points(self, points, rgbas=None, color=None, opacity=None):
+    def add_points(self, points, rgbas=None, color=None, alpha=1):
         """
         points must be a Nx3 numpy array, as must rgbas if it is not None
         """
+        if not isinstance(points, np.ndarray):
+            points = np.array(points)
+        num_new_points = len(points)
         self.append_points(points)
-        # rgbas array will have been resized with points
-        if color is not None:
-            if opacity is None:
-                opacity = self.data["rgbas"][-1, 3]
-            new_rgbas = np.repeat(
-                [color_to_rgba(color, opacity)],
-                len(points),
+        if rgbas is None:
+            color = Color(color) if color else self.color
+            rgbas = np.repeat(
+                [color_to_rgba(color, alpha)],
+                num_new_points,
                 axis=0
             )
-        elif rgbas is not None:
-            new_rgbas = rgbas
-        self.data["rgbas"][-len(new_rgbas):] = new_rgbas
+        elif len(rgbas) != len(points):
+            raise Exception("points and rgbas must have same shape")
+        self.data["rgbas"][-len(rgbas):] = rgbas
         return self
 
     def set_color_by_gradient(self, *colors):
