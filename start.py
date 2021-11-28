@@ -185,145 +185,124 @@ from tqdm import tqdm
     
 # class TexTransformExample(Scene):
     # def construct(self):
-    #     to_isolate = ["B", "C", "=", "(", ")"]
-    #     lines = VGroup(
-    #         # Passing in muliple arguments to Tex will result
-    #         # in the same expression as if those arguments had
-    #         # been joined together, except that the submobject
-    #         # hierarchy of the resulting mobject ensure that the
-    #         # Tex mobject has a subject corresponding to
-    #         # each of these strings.  For example, the Tex mobject
-    #         # below will have 5 subjects, corresponding to the
-    #         # expressions [A^2, +, B^2, =, C^2]
-    #         Tex("A^2", "+", "B^2", "=", "C^2"),
-    #         # Likewise here
-    #         Tex("A^2", "=", "C^2", "-", "B^2"),
-    #         # Alternatively, you can pass in the keyword argument
-    #         # "isolate" with a list of strings that should be out as
-    #         # their own submobject.  So the line below is equivalent
-    #         # to the commented out line below it.
-    #         Tex("A^2 = (C + B)(C - B)", isolate=["A^2", *to_isolate]),
-    #         # Tex("A^2", "=", "(", "C", "+", "B", ")", "(", "C", "-", "B", ")"),
-    #         Tex("A = \\sqrt{(C + B)(C - B)}", isolate=["A", *to_isolate])
-    #     )
-    #     lines.arrange(DOWN, buff=LARGE_BUFF)
-    #     for line in lines:
-    #         line.set_color_by_tex_to_color_map({
-    #             "A": BLUE,
-    #             "B": TEAL,
-    #             "C": GREEN,
-    #         })
+        # to_isolate = ["B", "C", "=", "(", ")"]
+        # lines = VGroup(
+        #     # Passing in muliple arguments to Tex will result
+        #     # in the same expression as if those arguments had
+        #     # been joined together, except that the submobject
+        #     # hierarchy of the resulting mobject ensure that the
+        #     # Tex mobject has a subject corresponding to
+        #     # each of these strings.  For example, the Tex mobject
+        #     # below will have 5 subjects, corresponding to the
+        #     # expressions [A^2, +, B^2, =, C^2]
+        #     Tex("A^2", "+", "B^2", "=", "C^2"),
+        #     # Likewise here
+        #     Tex("A^2", "=", "C^2", "-", "B^2"),
+        #     # Alternatively, you can pass in the keyword argument
+        #     # "isolate" with a list of strings that should be out as
+        #     # their own submobject.  So the line below is equivalent
+        #     # to the commented out line below it.
+        #     Tex("A^2 = (C + B)(C - B)", isolate=["A^2", *to_isolate]),
+        #     # Tex("A^2", "=", "(", "C", "+", "B", ")", "(", "C", "-", "B", ")"),
+        #     Tex("A = \\sqrt{(C + B)(C - B)}", isolate=["A", *to_isolate])
+        # )
+        # lines.arrange(DOWN, buff=LARGE_BUFF)
+        # for line in lines:
+        #     line.set_color_by_tex_to_color_map({
+        #         "A": BLUE,
+        #         "B": TEAL,
+        #         "C": GREEN,
+        #     })
 
-    #     play_kw = {"run_time": 2}
-    #     self.add(lines[0])
-    #     # The animation TransformMatchingTex will line up parts
-    #     # of the source and target which have matching tex strings.
-    #     # Here, giving it a little path_arc makes each part sort of
-    #     # rotate into their final positions, which feels appropriate
-    #     # for the idea of rearranging an equation
-    #     self.play(
-    #         TransformMatchingTex(
-    #             lines[0].copy(), lines[1],
-    #             path_arc=90 * DEGREES,
-    #         ),
-    #         **play_kw
-    #     )
-    #     self.wait()
+        # play_kw = {"run_time": 2}
+        # self.add(lines[0])
+        # # The animation TransformMatchingTex will line up parts
+        # # of the source and target which have matching tex strings.
+        # # Here, giving it a little path_arc makes each part sort of
+        # # rotate into their final positions, which feels appropriate
+        # # for the idea of rearranging an equation
+        # self.play(
+        #     TransformMatchingTex(
+        #         lines[0].copy(), lines[1],
+        #         path_arc=90 * DEGREES,
+        #     ),
+        #     **play_kw
+        # )
+        # self.wait()
 
-    #     # Now, we could try this again on the next line...
-    #     self.play(
-    #         TransformMatchingTex(lines[1].copy(), lines[2]),
-    #         **play_kw
-    #     )
-    #     self.wait()
+        # # Now, we could try this again on the next line...
+        # self.play(
+        #     TransformMatchingTex(lines[1].copy(), lines[2]),
+        #     **play_kw
+        # )
+        # self.wait()
         
-    #     # ...and this looks nice enough, but since there's no tex
-    #     # in lines[2] which matches "C^2" or "B^2", those terms fade
-    #     # out to nothing while the C and B terms fade in from nothing.
-    #     # If, however, we want the C^2 to go to C, and B^2 to go to B,
-    #     # we can specify that with a key map.
-    #     self.play(FadeOut(lines[2]))
-    #     self.play(
-    #         TransformMatchingTex(
-    #             lines[1].copy(), lines[2],
-    #             key_map={
-    #                 "C^2": "C",
-    #                 "B^2": "B",
-    #             }
-    #         ),
-    #         **play_kw
-    #     )
-    #     self.wait()
+        # # ...and this looks nice enough, but since there's no tex
+        # # in lines[2] which matches "C^2" or "B^2", those terms fade
+        # # out to nothing while the C and B terms fade in from nothing.
+        # # If, however, we want the C^2 to go to C, and B^2 to go to B,
+        # # we can specify that with a key map.
+        # self.play(FadeOut(lines[2]))
+        # self.play(
+        #     TransformMatchingTex(
+        #         lines[1].copy(), lines[2],
+        #         key_map={
+        #             "C^2": "C",
+        #             "B^2": "B",
+        #         }
+        #     ),
+        #     **play_kw
+        # )
+        # self.wait()
 
-    #     # And to finish off, a simple TransformMatchingShapes would work
-    #     # just fine.  But perhaps we want that exponent on A^2 to transform into
-    #     # the square root symbol.  At the moment, lines[2] treats the expression
-    #     # A^2 as a unit, so we might create a new version of the same line which
-    #     # separates out just the A.  This way, when TransformMatchingTex lines up
-    #     # all matching parts, the only mismatch will be between the "^2" from
-    #     # new_line2 and the "\sqrt" from the final line.  By passing in,
-    #     # transform_mismatches=True, it will transform this "^2" part into
-    #     # the "\sqrt" part.
-    #     new_line2 = Tex("A^2 = (C + B)(C - B)", isolate=["A", *to_isolate])
-    #     new_line2.replace(lines[2])
-    #     new_line2.match_style(lines[2])
+        # # And to finish off, a simple TransformMatchingShapes would work
+        # # just fine.  But perhaps we want that exponent on A^2 to transform into
+        # # the square root symbol.  At the moment, lines[2] treats the expression
+        # # A^2 as a unit, so we might create a new version of the same line which
+        # # separates out just the A.  This way, when TransformMatchingTex lines up
+        # # all matching parts, the only mismatch will be between the "^2" from
+        # # new_line2 and the "\sqrt" from the final line.  By passing in,
+        # # transform_mismatches=True, it will transform this "^2" part into
+        # # the "\sqrt" part.
+        # new_line2 = Tex("A^2 = (C + B)(C - B)", isolate=["A", *to_isolate])
+        # new_line2.replace(lines[2])
+        # new_line2.match_style(lines[2])
 
-    #     self.play(
-    #         TransformMatchingTex(
-    #             new_line2, lines[3],
-    #             transform_mismatches=True,
-    #         ),
-    #         **play_kw
-    #     )
-    #     self.wait(3)
-    #     self.play(FadeOut(lines, RIGHT))
+        # self.play(
+        #     TransformMatchingTex(
+        #         new_line2, lines[3],
+        #         transform_mismatches=True,
+        #     ),
+        #     **play_kw
+        # )
+        # self.wait(3)
+        # self.play(FadeOut(lines, RIGHT))
 
-    #     # Alternatively, if you don't want to think about breaking up
-    #     # the tex strings deliberately, you can TransformMatchingShapes,
-    #     # which will try to line up all pieces of a source mobject with
-    #     # those of a target, regardless of the submobject hierarchy in
-    #     # each one, according to whether those pieces have the same
-    #     # shape (as best it can).
-    #     source = Text("the morse code", height=1)
-    #     target = Text("here come dots", height=1)
+        # # Alternatively, if you don't want to think about breaking up
+        # # the tex strings deliberately, you can TransformMatchingShapes,
+        # # which will try to line up all pieces of a source mobject with
+        # # those of a target, regardless of the submobject hierarchy in
+        # # each one, according to whether those pieces have the same
+        # # shape (as best it can).
+        # source = Text("the morse code", height=1)
+        # target = Text("here come dots", height=1)
 
-    #     self.play(Write(source))
-    #     self.wait()
-    #     kw = {"run_time": 3, "path_arc": PI / 2}
-    #     self.play(TransformMatchingShapes(source, target, **kw))
-    #     self.wait()
-    #     self.play(TransformMatchingShapes(target, source, **kw))
-    #     self.wait()
+        # self.play(Write(source))
+        # self.wait()
+        # kw = {"run_time": 3, "path_arc": PI / 2}
+        # self.play(TransformMatchingShapes(source, target, **kw))
+        # self.wait()
+        # self.play(TransformMatchingShapes(target, source, **kw))
+        # self.wait()
         
         
-class UNDERTALE(Scene):
-    def construct(self):
-        font = 'Comic Sans MS'
+# class Positions(Scene):
+    # def construct(self):
+        # plane = NumberPlane(faded_line_ratio=0)
+        # self.play(Write(plane, lag_ratio=0.01, run_time=1))
         
-        text1 = 'UNDERTALE' # UNDERTALE # undertale
-        text2 = 'DELTARUNE' # DELTARUNE # deltarune
-        
-        # source = Tex(*[c for c in source_text], font_size=256, font=font)
-        # target = Tex(*[c for c in target_text], font_size=256, font=font)
-        
-        text_1 = Text(text1, font_size=160, font=font)
-        text_2 = Text(text2, font_size=160, font=font)
-    
-        self.play(Write(text_1))
-        self.wait()
-        kw = {"run_time": 2, "path_arc": PI }
-        for n in range(1, 9):
-            self.play(TransformMatchingShapes(text_1, text_2, **kw), run_time=0.4+1/n)
-            self.play(TransformMatchingShapes(text_2, text_1, **kw), run_time=0.4+1/n)
-
-
-class Positions(Scene):
-    def construct(self):
-        plane = NumberPlane(faded_line_ratio=0)
-        self.play(Write(plane, lag_ratio=0.01, run_time=1))
-        
-        dot = Dot()
-        self.play(FadeIn(dot))
+        # dot = Dot()
+        # self.play(FadeIn(dot))
         # self.wait()
         
         # self.play(dot.animate.move_to(np.array([1, 2, 0])))
@@ -334,159 +313,24 @@ class Positions(Scene):
         #     plane.animate.apply_complex_function(lambda x: x*1j),
         #     run_time=2,
         # )
-        self.play(dot.animate.move_to(np.array([1, 0, 0])))
+        # self.play(dot.animate.move_to(np.array([1, 0, 0])))
         
-        value = PI / 2
-        radius = 1
-        arc = Arc(0, value, radius=radius, color=BLUE)
-        x_tracker = ValueTracker(radius)
-        f_always(
-            dot.move_to,
-            lambda: plane.i2gp(min(radius, x_tracker.get_value()), arc)
-        )
-        f_always(
-            plane.rotate,
-            lambda: 1-min(radius, x_tracker.get_value())
-        )
-        self.play(
-            ShowCreation(arc),
-            x_tracker.animate.set_value(value),
-        )
-
-
-class Primes(Scene):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.start = t.time()
-        with open('data/1억 중 소수목록.txt') as f:
-            primes = f.read().split(',')[:-1]
-        self.primes = list(map(int, primes))
-        print('소수 데이터 가져오기 완료! (소수 개수 %d개)' % len(primes))
-
-        self.bgl_style = {
-            "stroke_color": BLUE_D,
-            "stroke_width": 2,
-            "stroke_opacity": 0,
-        }
-
-
-    def time_delta(self):
-        time_delta = int(t.time() - self.start)
-        return '{}h {}m {}s'.format(
-            time_delta // 3600, (time_delta % 3600) // 60, (time_delta % 3600) % 60
-        )
-
-
-    def construct(self):
-        ar = 125*8.2 # 사용할 소수 범위
-        zoom1 = lambda x: x/10
-        zoom2 = lambda x: x/125
-        zoom3 = lambda x: x/100
-        
-        # 좌표평면 그리기
-        plane = NumberPlane(faded_line_ratio=0)
-        self.play(Write(plane, lag_ratio=0.01, run_time=1))
-        plane.add_coordinate_labels()
-        
-        dots_moved = []
-        for i, info_pos in zip(range(1, 5), [UR, UL, UP, DOWN]):
-            vector = Vector(X_AXIS*i)
-            dot = Dot(X_AXIS*i, color=BLUE)
-            self.play(FadeIn(dot), ShowCreation(vector))
-            
-            x_tracker = ValueTracker(i)
-            arc = Arc(0, i, radius=i, color=BLUE)
-            f_always(
-                dot.move_to,
-                lambda: plane.i2gp(x_tracker.get_value(), arc)
-            )
-            dots_moved.append(Dot(dot.get_center(), color=BLUE))
-            text = Text(f"(r={i}, rad={i})").next_to(dot, direction=info_pos)
-            
-            f_always(
-                vector.set_points_by_ends,
-                lambda: ORIGIN,
-                lambda: plane.i2gp(x_tracker.get_value(), arc),
-            )
-            self.play(ShowCreation(arc), x_tracker.animate.set_value(i))
-            self.play(FadeIn(text), FadeIn(dots_moved[-1]), FadeOut(dot))
-            self.wait()
-            self.play(FadeOut(arc), FadeOut(text), FadeOut(vector))
-
-        plane2 = NumberPlane(background_line_style=self.bgl_style, faded_line_ratio=0)
-        self.play(FadeOut(plane), FadeIn(plane2))
-        
-        zoom_dots = [dot.animate.apply_function(zoom1) for dot in dots_moved]
-        self.play(*zoom_dots)
-        self.wait()
-        
-        # 점 추가하기
-        dots_Pin100, dots_NPin100 = [], []
-        texts_Pin100, texts_NPin100 = [], []
-        for n in range(1, 100+1):
-            dot = Dot(np.array([zoom1(n), 0, 0])).rotate(n, about_point=ORIGIN)
-            
-            (dots, texts) = (dots_Pin100, texts_Pin100) if n in self.primes else (dots_NPin100, texts_NPin100)
-            dots.append(Dot(dot.get_center(), color=BLUE, radius=0.03))
-            
-            texts.append(Text(str(n), font_size=18).next_to(dots[-1], direction=UP, buff=0.1))
-            self.play(
-                FadeIn(dots[-1]),
-                FadeIn(texts[-1]),
-                run_time = 1/n
-            )
-            
-        dots_Primes = []
-        positions_zoom2, positions_zoom3 = [], []
-        for n in self.primes:
-            if n > ar: break
-            dot = Dot(np.array([zoom1(n), 0, 0])).rotate(n, about_point=ORIGIN)
-            dots_Primes.append(Dot(dot.get_center(), color=BLUE, radius=0.01))
-            dot.apply_function(zoom2)
-            positions_zoom2.append(dot.get_center())
-            dot.apply_function(zoom3)
-            positions_zoom3.append(dot.get_center())
-            sys.stdout.write(f'\r{n}')
-            sys.stdout.flush()
-        print()
-        
-        # 화면 안의 소수 아닌 수들 사라지기
-        text = Text('소수만 남기기', font='BM JUA_TTF', font_size=64).to_edge(UP)
-        self.play(Write(text))
-        self.play(
-            FadeOut(VGroup(*dots_NPin100)), 
-            FadeOut(VGroup(*texts_NPin100)), 
-            FadeOut(VGroup(*dots_moved)), 
-            run_time=3
-        )
-        
-        # 화면 안의 소수 점만 남기기, 화면 밖의 나머지 소수도 모두 나타나기
-        self.play(
-            FadeOut(VGroup(*dots_Pin100)), 
-            FadeOut(VGroup(*texts_Pin100)), 
-            FadeIn(VGroup(*dots_Primes)),
-            FadeOut(text), 
-            run_time=3
-        )
-        
-        # 화면 축소하기
-        move_dots = [dot.animate.move_to(pos) \
-            for dot, pos in tqdm(
-                zip(dots_Primes, positions_zoom2), total=len(dots_Primes)
-            )
-        ]
-        self.play(*move_dots, run_time=5)
-        self.wait(1)
-        
-        move_dots = [dot.animate.move_to(pos) \
-            for dot, pos in tqdm(
-                zip(dots_Primes, positions_zoom3), total=len(dots_Primes)
-            )
-        ]
-        self.play(*move_dots, run_time=4)
-        self.wait(3)
-
-        print(self.time_delta())
+        # value = PI / 2
+        # radius = 1
+        # arc = Arc(0, value, radius=radius, color=BLUE)
+        # x_tracker = ValueTracker(radius)
+        # f_always(
+        #     dot.move_to,
+        #     lambda: plane.i2gp(min(radius, x_tracker.get_value()), arc)
+        # )
+        # f_always(
+        #     plane.rotate,
+        #     lambda: 1-min(radius, x_tracker.get_value())
+        # )
+        # self.play(
+        #     ShowCreation(arc),
+        #     x_tracker.animate.set_value(value),
+        # )
 
 
 # class Plane_Transform(Scene):
@@ -512,3 +356,71 @@ class Primes(Scene):
         # # plane.add_coordinate_labels(labels, labels, font_size=100)
         # self.play(plane.animate.apply_function(zoom_out), run_time=1)
         # self.play(plane.animate.apply_complex_function(x_square), run_time=10)
+        
+        
+class Equations(Scene):
+    def construct(self):
+        font = 'BM JUA_TTF'
+        
+        to_isolate = ['a','b','c','\\sqrt','\\pm','\\over ','^2','+','-','=','x']
+        kw = {"isolate": [*to_isolate], "font_size": 80}
+        # lines = VGroup(
+        #     # Text("일차방정식 (Linear Equation)", font=font),
+        #     Tex("ax + b = 0", **kw),
+        #     Tex("ax = b", **kw),
+        #     Tex("x = {b \\over a}", **kw),
+        # )
+        lines = VGroup(
+            Tex('ax^2+bx+c=0', **kw),
+            Tex('ax^2+bx=-c', **kw),
+            # Tex('x^2+{b\\over a}x=-{c\\over a}', **kw),
+            # Tex('x^2+{b\\over a}x+\\left({b\\over 2a}\\right)^2=-{c\\over a}+\\left({b\\over 2a}\\right)^2', **kw),
+            # Tex('\\left(x+{b\\over 2a}\\right)^2=-{c\\over a}+\\left({b\\over 2a}\\right)^2', **kw),
+            # Tex('\\left(x+{b\\over 2a}\\right)^2=-{c\\over a}+{b^2\\over 4a^2}', **kw),
+            # Tex('\\left(x+{b\\over 2a}\\right)^2={b^2\\over 4a^2}-{c\\over a}', **kw),
+            # Tex('\\left(x+{b\\over 2a}\\right)^2={b^2\\over 4a^2}-{4c\\over 4a}', **kw),
+            # Tex('\\left(x+{b\\over 2a}\\right)^2={b^2\\over 4a^2}-{4ac\\over 4a^2}', **kw),
+            # Tex('\\left(x+{b\\over 2a}\\right)^2={b^2-4ac\\over 4a^2}', **kw),
+            # Tex('\\sqrt{\\left(x+{b\\over 2a}\\right)^2}=\\pm\\sqrt{{b^2-4ac\\over 4a^2}}', **kw),  
+            # Tex('x+{b\\over 2a}=\\pm\\sqrt{{b^2-4ac\\over 4a^2}}', **kw),
+            # Tex('x=-{b\\over 2a}\\pm\\sqrt{{b^2-4ac\\over 4a^2}}', **kw),
+            # Tex('x=-{b\\over 2a}\\pm{\\sqrt{b^2-4ac}\\over 2a}', **kw),
+            # Tex('x={-b\\pm\\sqrt{b^2-4ac}\\over 2a}', **kw),
+        )
+        key_maps = [
+            {'+':'-'},
+            # {},
+            # {},
+            # {},
+            # {},
+            # {},
+            # {},
+            # {},
+            # {},
+            # {},
+            # {},
+            # {},
+            # {},
+            # {},
+        ]
+        for line in lines:
+            line.set_color_by_tex_to_color_map({
+            "a": BLUE,
+            "b": TEAL,
+            "c": GREEN,
+        })
+        play_kw = {"run_time": 10}
+        self.play(FadeIn(lines[0]))
+        
+        for i in range(len(lines)-1):
+            self.play(
+                    TransformMatchingTex(
+                        lines[i], lines[i+1],
+                        transform_mismatches=True,
+                        key_map=key_maps[i],
+                    ),
+                    **play_kw
+                )
+
+
+            

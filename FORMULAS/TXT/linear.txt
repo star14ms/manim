@@ -1,0 +1,3 @@
+ax+b=0
+ax=-b
+x=-{b\over a}
