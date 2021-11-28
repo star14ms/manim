@@ -1,5 +1,12 @@
 import numpy as np
 
+# There might be other configuration than pixel shape later...
+PRODUCTION_QUALITY_CAMERA_CONFIG = {
+    "pixel_height": 1440,
+    "pixel_width": 2560,
+    "frame_rate": 60,
+}
+
 # Sizes relevant to default camera frame
 ASPECT_RATIO = 16.0 / 9.0
 FRAME_HEIGHT = 8.0

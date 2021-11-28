@@ -347,6 +347,14 @@ class Axes(VGroup, CoordinateSystem):
             labels = axis.add_numbers(values, **kwargs)
             self.coordinate_labels.add(labels)
         return self.coordinate_labels
+    
+    def get_axis(self, min_val, max_val, axis_config):
+        new_config = merge_dicts_recursively([
+            axis_config,
+            {"x_min": min_val, "x_max": max_val},
+            self.number_line_config,
+        ])
+        return NumberLine(**new_config)
 
 
 class ThreeDAxes(Axes):
